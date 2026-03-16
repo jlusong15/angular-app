@@ -1,8 +1,4 @@
-<nav class="bg-primary text-white p-4 flex gap-6">
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/my-tasks">My Tasks</a>
-  <a routerLink="/contact-me">Contact Me</a>
-</nav>
+<app-menu-nav [navigation]="navigation"></app-menu-nav>
 
 <div class="p-6">
   <router-outlet></router-outlet>
