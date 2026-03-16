@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-	/* Semantic colors */
+  /* Semantic colors */
   --primary: oklch(68.173% 0.10528 101.841);
-	--primary-foreground: oklch(0.985 0 0);
-	--success: oklch(69.052% 0.19714 146.635);
-	--destructive: oklch(57.668% 0.21289 27.141);
+  --primary-foreground: oklch(0.985 0 0);
+  --success: oklch(69.052% 0.19714 146.635);
+  --destructive: oklch(57.668% 0.21289 27.141);
 
   /* Neutral scale */
   --neutralGray-0: oklch(100% 0.00011 271.152);
@@ -19,4 +19,36 @@
   --neutralGray-600: oklch(27.394% 0.00551 285.955);
   --neutralGray-700: oklch(21.033% 0.00588 285.832);
   --neutralGray-800: oklch(14.077% 0.0044 285.776);
+}
+
+@layer base {
+  /* * {
+    @apply border-border outline-ring/50;
+  } */
+  body {
+    @apply bg-neutral-50 text-sm;
+  }
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold;
+  }
+
+  h4 {
+    @apply text-xl font-medium;
+  }
+
+  h5 {
+    @apply text-lg font-medium;
+  }
+
+  h6 {
+    @apply text-base font-medium;
+  }
 }

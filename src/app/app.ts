@@ -1,12 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { NavLinks } from './types/nav.model';
-import { MenuNav } from './menu-nav/menu-nav';
+import { MenuNav } from './component/menu-nav/menu-nav';
+import { SidebarMenuNav } from './component/sidebar-menu-nav/sidebar-menu-nav';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, MenuNav],
+  imports: [RouterOutlet, MenuNav, SidebarMenuNav],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
