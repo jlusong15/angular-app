@@ -1,0 +1,52 @@
+<div class="flex">
+  <!-- Sidebar -->
+  <aside
+    class="relative h-screen bg-primary transition-all duration-300"
+    [class.w-64]="isOpen"
+    [class.w-16]="!isOpen"
+  >
+    <!-- Toggle Button -->
+    <button class="absolute top-2 right-2 text-white p-2" (click)="toggleSidebar()">
+      @if (isOpen) {
+        open
+      } @else {
+        close
+      }
+    </button>
+
+    <!-- Navigation -->
+    <nav class="mt-12 flex flex-col gap-2 relative">
+      <ng-container *ngFor="let item of navigation">
+        <!-- Mini Icon when closed -->
+        <a
+          *ngIf="!isOpen"
+          href="{{ item.href }}"
+          class="absolute left-[-48px] w-12 h-12 bg-primary-foreground text-white rounded flex items-center justify-center shadow-lg hover:bg-primary cursor-pointer transition-all"
+          [title]="item.name"
+        >
+          icon
+        </a>
+
+        <!-- Full menu when open -->
+        <a
+          *ngIf="isOpen"
+          href="{{ item.href }}"
+          class="flex items-center gap-3 p-2 text-white hover:bg-primary-foreground rounded transition-all"
+        >
+          icon
+          <span>{{ item.name }}</span>
+        </a>
+      </ng-container>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main
+    [class.ml-64]="isOpen"
+    [class.ml-16]="!isOpen"
+    class="transition-all duration-300 flex-1 p-4"
+  >
+    <h1 class="text-2xl font-bold">Main Content</h1>
+    <p>Page content goes here...</p>
+  </main>
+</div>
