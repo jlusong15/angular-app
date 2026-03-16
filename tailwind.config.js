@@ -22,6 +22,9 @@ module.exports = {
           800: 'var(--neutralGray-800)',
         },
       },
+      fontFamily: {
+        geist: ['Geist', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -1,3 +1,5 @@
+@import "@fontsource/geist";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,7 +28,7 @@
     @apply border-border outline-ring/50;
   } */
   body {
-    @apply bg-neutral-50 text-sm;
+    @apply bg-neutral-50 text-sm font-geist;
   }
   h1 {
     @apply text-4xl font-bold;
