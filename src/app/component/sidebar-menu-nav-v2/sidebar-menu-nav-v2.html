@@ -13,17 +13,18 @@
       <div class="flex justify-between items-center">
         @if (isOpen) {
           <div class="flex gap-2 items-center">
-            <lucide-icon [img]="Icons.MyIcon" class="text-white"></lucide-icon>
-            <span class="text-base">JLB</span>
+            <lucide-icon [img]="Icons.MyIcon" strokeWidth="1" class="text-white"></lucide-icon>
+            <span class="text-xs italic font-mono">dev:jenna</span>
           </div>
           <div>
             <lucide-icon
               [img]="Icons.Close"
+              strokeWidth="1"
               class="text-white size-5 hover:text-white/50 transition-colors"
             ></lucide-icon>
           </div>
         } @else {
-          <lucide-icon [img]="Icons.MyIcon" class="text-white"></lucide-icon>
+          <lucide-icon [img]="Icons.MyIcon" strokeWidth="1" class="text-white"></lucide-icon>
         }
       </div>
     </button>
@@ -41,7 +42,12 @@
           [routerLinkActiveOptions]="{ exact: true }"
         >
           @if (item.icon) {
-            <lucide-icon [name]="item.icon" [size]="24" class="text-white"></lucide-icon>
+            <lucide-icon
+              [name]="item.icon"
+              [size]="24"
+              strokeWidth="1"
+              class="text-white"
+            ></lucide-icon>
           }
           <span>{{ item.name }}</span>
         </a>
@@ -55,7 +61,12 @@
             routerLinkActive="bg-primary/80"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <lucide-icon [name]="item.icon" [size]="24" class="text-white"></lucide-icon>
+            <lucide-icon
+              [name]="item.icon"
+              [size]="24"
+              strokeWidth="1"
+              class="text-white"
+            ></lucide-icon>
           </a>
         }
       }
