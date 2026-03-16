@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Cat, LucideAngularModule, Menu, X } from 'lucide-angular';
+import { Cat, House, LucideAngularModule, Mail, Menu, SquareCheckBig, X } from 'lucide-angular';
 import { NavModel } from '../../types/nav.model';
 
 @Component({
@@ -18,7 +18,11 @@ export class SidebarMenuNavV2 {
     Close: X,
   }
 
-  @Input() navigation: NavModel[] = []
+  navigation = [
+    { name: 'Dashboard', icon: House, route: '/dashboard', current: true },
+    { name: 'Tasks', icon: SquareCheckBig, route: '/tasks' },
+    { name: 'Contact', icon: Mail, route: '/contact' },
+  ];
 
   // Output to parent
   @Output() isOpenChange = new EventEmitter<boolean>();

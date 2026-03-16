@@ -1,50 +1,64 @@
-<!-- Sidebar -->
 <aside
   class="absolute h-screen bg-primary transition-all duration-300"
-  [class.w-64]="isOpen"
+  [class.w-60]="isOpen"
   [class.w-16]="!isOpen"
 >
   <!-- Toggle Button -->
-  <button class="absolute top-2 right-3 text-white p-2" (click)="toggleSidebar()">
-    @if (isOpen) {
-      <lucide-icon
-        [img]="Icons.Close"
-        class="my-icon text-white group-hover/profile:text-white"
-      ></lucide-icon>
-    } @else {
-      <lucide-icon
-        [img]="Icons.MyIcon"
-        class="my-icon text-white group-hover/profile:text-white"
-      ></lucide-icon>
-    }
-  </button>
+  <div class="p-2" [ngClass]="{ 'bg-gray-900/40': isOpen }">
+    <button
+      class="text-white rounded transition-all p-3"
+      [ngClass]="{ 'w-full': isOpen, 'bg-gray-900/40 hover:bg-gray-900/20': !isOpen }"
+      (click)="toggleSidebar()"
+    >
+      <div class="flex justify-between items-center">
+        @if (isOpen) {
+          <div class="flex gap-2 items-center">
+            <lucide-icon [img]="Icons.MyIcon" class="text-white"></lucide-icon>
+            <span class="text-base">JLB</span>
+          </div>
+          <div>
+            <lucide-icon
+              [img]="Icons.Close"
+              class="text-white size-5 hover:text-white/50 transition-colors"
+            ></lucide-icon>
+          </div>
+        } @else {
+          <lucide-icon [img]="Icons.MyIcon" class="text-white"></lucide-icon>
+        }
+      </div>
+    </button>
+  </div>
 
   <!-- Navigation -->
-  <nav class="mt-12 flex flex-col gap-2 relative">
-    <ng-container *ngFor="let item of navigation">
+  <nav class="p-2 pt-2 flex flex-col gap-2 relative">
+    @for (item of navigation; track item.name) {
       @if (isOpen) {
         <!-- Full menu when open -->
         <a
           [routerLink]="item.route"
-          class="flex items-center gap-3 p-2 text-white hover:bg-primary-foreground rounded transition-all"
+          class="flex items-center gap-3 p-3 text-white hover:bg-gray-900/20 rounded transition-all"
           routerLinkActive="bg-primary/80"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <lucide-icon [name]="item.icon" [size]="24" class="text-white"></lucide-icon>
+          @if (item.icon) {
+            <lucide-icon [name]="item.icon" [size]="24" class="text-white"></lucide-icon>
+          }
           <span>{{ item.name }}</span>
         </a>
       } @else {
         <!-- Mini Icon when closed -->
-        <a
-          [routerLink]="item.route"
-          class="absolute left-[-48px] w-12 h-12 bg-primary-foreground text-white rounded flex items-center justify-center shadow-lg hover:bg-primary cursor-pointer transition-all"
-          [title]="item.name"
-          routerLinkActive="bg-primary/80"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <lucide-icon [name]="item.icon" [size]="24" class="text-white"></lucide-icon>
-        </a>
+        @if (item.icon) {
+          <a
+            [routerLink]="item.route"
+            class="gap-3 p-3 bg-transparent text-white rounded flex items-center justify-center hover:bg-gray-900/20 cursor-pointer transition-all"
+            [title]="item.name"
+            routerLinkActive="bg-primary/80"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <lucide-icon [name]="item.icon" [size]="24" class="text-white"></lucide-icon>
+          </a>
+        }
       }
-    </ng-container>
+    }
   </nav>
 </aside>
