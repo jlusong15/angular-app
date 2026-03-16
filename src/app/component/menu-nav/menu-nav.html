@@ -25,7 +25,7 @@
           <div class="flex space-x-4">
             <a
               *ngFor="let item of navigation"
-              [routerLink]="item.href"
+              [routerLink]="item.route"
               [ngClass]="{
                 'bg-white text-primary': item.current,
                 'text-white hover:bg-white/5 hover:text-white': !item.current,
@@ -82,7 +82,7 @@
       <div class="space-y-1 px-2 pt-2 pb-3">
         <a
           *ngFor="let item of navigation"
-          [routerLink]="item.href"
+          [routerLink]="item.route"
           [ngClass]="{
             'bg-gray-900 text-white': item.current,
             'text-gray-300 hover:bg-white/5 hover:text-white': !item.current,

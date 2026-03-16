@@ -1,9 +1,16 @@
-<!-- <app-menu-nav [navigation]="navigation"></app-menu-nav> -->
-<!-- <app-sidebar-menu-nav [navigation]="navigation"></app-sidebar-menu-nav> -->
-<app-sidebar-menu-nav-v2 [navigation]="navigation"></app-sidebar-menu-nav-v2>
+<div class="flex">
+  <!-- Sidebar -->
+  <app-sidebar-menu-nav-v2
+    (isOpenChange)="onSidebarToggle($event)"
+    [navigation]="navigation"
+  ></app-sidebar-menu-nav-v2>
 
-
-
-<div class="p-6">
-  <router-outlet></router-outlet>
+  <!-- Main Content -->
+  <main
+    [class.ml-64]="sidebarOpen"
+    [class.ml-16]="!sidebarOpen"
+    class="transition-all duration-300 flex-1 p-4"
+  >
+    <router-outlet></router-outlet>
+  </main>
 </div>

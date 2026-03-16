@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { House, LucideAngularModule, Mail, Menu, SquareCheckBig, X } from 'lucide-angular';
+import { Cat, LucideAngularModule, Menu, X } from 'lucide-angular';
 import { NavModel } from '../../types/nav.model';
 
 @Component({
@@ -13,19 +13,21 @@ import { NavModel } from '../../types/nav.model';
 })
 export class SidebarMenuNavV2 {
   readonly Icons = {
+    MyIcon: Cat,
     Menu,
-    Mail,
-    House,
     Close: X,
-    CheckSquare: SquareCheckBig,
   }
 
   @Input() navigation: NavModel[] = []
+
+  // Output to parent
+  @Output() isOpenChange = new EventEmitter<boolean>();
 
   isOpen = false;
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
+    this.isOpenChange.emit(this.isOpen); // send updated state to parent
   }
 
 }
