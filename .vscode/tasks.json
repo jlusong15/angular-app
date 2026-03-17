@@ -37,6 +37,11 @@
           }
         }
       }
+    },
+    {
+      "label": "kill-terminal",
+      "type": "process",
+      "command": "${command:workbench.action.terminal.kill}"
     }
   ]
 }
