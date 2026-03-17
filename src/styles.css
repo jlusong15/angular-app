@@ -21,6 +21,8 @@
   --neutralGray-600: oklch(27.394% 0.00551 285.955);
   --neutralGray-700: oklch(21.033% 0.00588 285.832);
   --neutralGray-800: oklch(14.077% 0.0044 285.776);
+
+  --customGray: oklch(95.4% 0.00637 255.746);
 }
 
 @layer base {
@@ -28,7 +30,8 @@
     @apply border-border outline-ring/50;
   } */
   body {
-    @apply bg-neutral-50 text-sm font-geist;
+    background-color: var(--customGray);
+    @apply text-sm font-geist;
   }
   h1 {
     @apply text-4xl font-geist font-bold;
