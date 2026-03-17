@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NavLinks } from '@shared/types/nav.model';
-import { Cat, House, LucideAngularModule, Mail, Menu, SquareCheckBig, X } from 'lucide-angular';
+import { Cat, LucideAngularModule, Menu, X } from 'lucide-angular';
 
 @Component({
   selector: 'app-sidebar-menu-nav-v2',
