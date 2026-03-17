@@ -21,6 +21,8 @@ module.exports = {
           700: 'var(--neutralGray-700)',
           800: 'var(--neutralGray-800)',
         },
+        'chart-1': 'color(var(--chart-1))',
+        'chart-2': 'color(var(--chart-2))'
       },
       fontFamily: {
         geist: ['Geist', 'sans-serif'],

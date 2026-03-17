@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { Component, OnDestroy } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { DonutChart } from '@shared/component/donut-chart/donut-chart';
 import { DatePicker } from 'primeng/datepicker';
 import { Subject, takeUntil } from 'rxjs';
-// import { DatePicker } from '@shared/component/date-picker/date-picker';
 
 @Component({
   selector: 'app-kpi-details',
-  imports: [FormsModule, DatePipe, ReactiveFormsModule, DatePicker],
+  imports: [FormsModule, ReactiveFormsModule, DatePicker, DonutChart],
   templateUrl: './kpi-details.html',
   styleUrl: './kpi-details.css',
   standalone: true
 })
-export class KpiDetails {
+export class KpiDetails implements OnDestroy {
   private destroy$ = new Subject<void>();
   date: Date | undefined = new Date();
   form = new FormGroup({
@@ -31,9 +30,12 @@ export class KpiDetails {
       });
   }
 
-
   onDateSelected(date: Date) {
     console.log('Date selected:', date);
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

@@ -9,4 +9,33 @@
       <i class="pi pi-calendar" (click)="clickCallBack($event)"></i>
     </ng-template>
   </p-datepicker>
+
+  <div class="mt-5 flex gap-3">
+    <div class="max-w-[160px]">
+      <app-donut-chart
+        [values]="[90, 10]"
+        [labels]="['Stories', 'Bugs']"
+        [showLegend]="false"
+        chartWidth="w-[160px] md:w-full"
+      ></app-donut-chart>
+    </div>
+
+    <div class="w-full pl-8 pt-8">
+      <div class="flex justify-between mb-4 text-sm">
+        <span class="d-flex text-primary">Stories</span
+        ><span class="d-flex font-bold text-base">1,250</span>
+      </div>
+
+      <div class="flex justify-between mb-4 text-sm">
+        <span class="d-flex text-chart-1">Bugs</span
+        ><span class="d-flex font-bold text-base">50</span>
+      </div>
+
+      <div class="flex justify-between text-base">
+        <span class="d-flex text-neutralGray-500">Overall</span
+        ><span class="d-flex font-bold text-lg">1,500</span>
+      </div>
+    </div>
+    <!-- <div class="w-full pl-8 pt-8">table</div> -->
+  </div>
 </form>
