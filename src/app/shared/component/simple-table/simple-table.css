@@ -1,0 +1,12 @@
+::ng-deep .p-datatable-sortable-column .p-datatable-sort-icon {
+  height: 10px;
+}
+
+::ng-deep .p-datatable-table-container {
+  border: 1px solid var(--neutralGray-200);
+  border-radius: 4px;
+}
+
+::ng-deep .p-datatable-thead .p-datatable-sortable-column {
+  color: var(--neutralGray-500)
+}

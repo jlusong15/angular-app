@@ -1,12 +1,14 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { DonutChart } from '@shared/component/donut-chart/donut-chart';
+import { SimpleTable } from '@shared/component/simple-table/simple-table';
 import { DatePicker } from 'primeng/datepicker';
 import { Subject, takeUntil } from 'rxjs';
+import { DonutChartData, SimpleTableData } from './data';
 
 @Component({
   selector: 'app-kpi-details',
-  imports: [FormsModule, ReactiveFormsModule, DatePicker, DonutChart],
+  imports: [FormsModule, ReactiveFormsModule, DatePicker, DonutChart, SimpleTable],
   templateUrl: './kpi-details.html',
   styleUrl: './kpi-details.css',
   standalone: true
@@ -17,6 +19,10 @@ export class KpiDetails implements OnDestroy {
   form = new FormGroup({
     selectedDate: new FormControl('')
   });
+
+  donutChart = DonutChartData
+  simpleTable = SimpleTableData
+
 
   constructor(private fb: UntypedFormBuilder) {
     this.form = this.fb.group({

@@ -3,7 +3,8 @@
     formControlName="selectedDate"
     [iconDisplay]="'input'"
     [showIcon]="true"
-    class="text-gray-500"
+    class="text-gray-500 text-sm"
+    dateFormat="MM d, yy"
   >
     <ng-template #inputicon let-clickCallBack="clickCallBack" class="">
       <i class="pi pi-calendar" (click)="clickCallBack($event)"></i>
@@ -13,8 +14,8 @@
   <div class="mt-5 flex gap-3">
     <div class="max-w-[160px]">
       <app-donut-chart
-        [values]="[90, 10]"
-        [labels]="['Stories', 'Bugs']"
+        [values]="donutChart.data"
+        [labels]="donutChart.labels"
         [showLegend]="false"
         chartWidth="w-[160px] md:w-full"
       ></app-donut-chart>
@@ -36,6 +37,12 @@
         ><span class="d-flex font-bold text-lg">1,500</span>
       </div>
     </div>
-    <!-- <div class="w-full pl-8 pt-8">table</div> -->
+  </div>
+
+  <div class="w-full mt-[22px]">
+    <app-simple-table
+      [tableData]="simpleTable.data"
+      [columns]="simpleTable.columns"
+    ></app-simple-table>
   </div>
 </form>
