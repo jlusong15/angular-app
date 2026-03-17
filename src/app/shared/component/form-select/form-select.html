@@ -1,17 +1,9 @@
-<div class="card flex justify-center">
-  <form
-    [formGroup]="form"
-    (ngSubmit)="onSubmit()"
-    class="flex flex-col gap-4 w-full sm:w-56"
-  >
-    <div class="flex flex-col gap-1">
-      <p-select
-        formControlName="city"
-        [options]="data"
-        optionLabel="name"
-        placeholder="Select"
-        class="w-full md:w-56"
-      />
-    </div>
-  </form>
-</div>
+<form [formGroup]="form">
+  <p-select
+    formControlName="select"
+    [options]="list"
+    optionLabel="name"
+    [placeholder]="placeholder"
+    class="w-full"
+  />
+</form>

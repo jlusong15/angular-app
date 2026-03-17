@@ -1,1 +1,6 @@
-<app-form-select></app-form-select>
+<form [formGroup]="form">
+  <app-form-select
+    formControlName="project"
+    [list]="projectDropdown"
+  ></app-form-select>
+</form>
