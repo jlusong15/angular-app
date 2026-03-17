@@ -1,0 +1,7 @@
+<app-date-picker
+  [(value)]="selectedDate"
+  placeholder="Choose your date"
+  (valueChange)="onDateSelected($event)"
+></app-date-picker>
+
+<p>Selected Date: {{ selectedDate | date:'fullDate' }}</p>

@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
-import { SidebarMenuNavV2 } from './component/sidebar-menu-nav-v2/sidebar-menu-nav-v2';
-import { NavLinks } from './types/nav.model';
+import { NavLinks } from '@shared/types/nav.model';
+import { SidebarMenuNavV2 } from '@shared/component/sidebar-menu-nav-v2/sidebar-menu-nav-v2';
 
 @Component({
   selector: 'app-root',

@@ -2,7 +2,7 @@ import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Cat, LucideAngularModule } from 'lucide-angular';
-import { NavModel } from '../../types/nav.model';
+import { NavModel } from '@shared/types/nav.model';
 
 @Component({
   selector: 'app-menu-nav',

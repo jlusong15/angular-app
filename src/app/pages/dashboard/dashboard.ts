@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { DataItem } from '@swimlane/ngx-charts';
-import { BarChart } from '../../component/bar-chart/bar-chart';
+import { BarChart } from '@shared/component/bar-chart/bar-chart';
+import { KpiDetails } from './kpi-details/kpi-details';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [BarChart],
+  imports: [BarChart, KpiDetails],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
   standalone: true,

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarMenuNav } from './sidebar-menu-nav';
+import { DatePicker } from './date-picker';
 
-describe('SidebarMenuNav', () => {
-  let component: SidebarMenuNav;
-  let fixture: ComponentFixture<SidebarMenuNav>;
+describe('DatePicker', () => {
+  let component: DatePicker;
+  let fixture: ComponentFixture<DatePicker>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SidebarMenuNav],
+      imports: [DatePicker],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SidebarMenuNav);
+    fixture = TestBed.createComponent(DatePicker);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
