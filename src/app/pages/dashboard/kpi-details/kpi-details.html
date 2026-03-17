@@ -7,7 +7,12 @@
     dateFormat="MM d, yy"
   >
     <ng-template #inputicon let-clickCallBack="clickCallBack" class="">
-      <i class="pi pi-calendar" (click)="clickCallBack($event)"></i>
+      <!-- <i class="pi pi-calendar" (click)="clickCallBack($event)"></i> -->
+      <lucide-icon
+        [img]="Icons.CalendarRange"
+        strokeWidth="1"
+        class="text-gray-500 size-4"
+      ></lucide-icon>
     </ng-template>
   </p-datepicker>
 

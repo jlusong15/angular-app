@@ -29,10 +29,47 @@
     </div>
   </div>
 
-  <div class="d-flex w-full max-w-[33%]">
+  <div class="flex flex-col w-full max-w-[33%] gap-5">
     <!-- Column 2 -->
     <div class="bg-white w-full border shadow-sm rounded-md">
-      <div class="p-6">Column 2</div>
+      <div class="px-6 pt-6 pb-2">
+        <h3 class="mb-2.5">Annual Milestone</h3>
+      </div>
+      <div class="flex justify-between pl-5 pr-5 pb-5">
+        <div class="w-[60%]">
+          <h3 class="d-block font-bold">Year 2023-2024</h3>
+          <span class="d-block text-neutral-500">06/01/2023 - 05/31/2024</span>
+          <div class="d-block">
+            <lucide-icon
+              [img]="Icons.CalendarDays"
+              strokeWidth="1"
+              class="text-neutralGray-500 mt-2.5 size-10"
+            ></lucide-icon>
+          </div>
+        </div>
+        <div class="w-[40%] flex flex-col gap-2.5">
+          <div class="w-full bg-neutralGray-100 flex flex-col rounded-[10px] p-1.5">
+            <span class="d-block text-[48px] leading-[50px] font-bold">32</span>
+            <span class="d-block text-neutral-500">COMPLETED</span>
+          </div>
+          <div class="w-full bg-neutralGray-100 flex flex-col rounded-[10px] p-1.5">
+            <span class="d-block text-[48px] leading-[50px] font-bold">10</span>
+            <span class="d-block text-neutral-500">PENDING</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="bg-white w-full border shadow-sm rounded-md">
+      <div class="px-6 pt-6 pb-2">
+        <h3 class="mb-2.5">Ticket Breakdown</h3>
+        <span class="text-neutralGray-500">Year 2023</span>
+        <div>
+          <app-ticket-breakdown-details></app-ticket-breakdown-details>
+        </div>
+      </div>
+
     </div>
   </div>
 

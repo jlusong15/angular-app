@@ -5,16 +5,20 @@ import { SimpleTable } from '@shared/component/simple-table/simple-table';
 import { DatePicker } from 'primeng/datepicker';
 import { Subject, takeUntil } from 'rxjs';
 import { DonutChartData, SimpleTableData } from './data';
+import { CalendarRange, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-kpi-details',
-  imports: [FormsModule, ReactiveFormsModule, DatePicker, DonutChart, SimpleTable],
+  imports: [FormsModule, ReactiveFormsModule, DatePicker, DonutChart, SimpleTable, LucideAngularModule],
   templateUrl: './kpi-details.html',
   styleUrl: './kpi-details.css',
   standalone: true
 })
 export class KpiDetails implements OnDestroy {
   private destroy$ = new Subject<void>();
+  Icons = {
+    CalendarRange
+  }
   date: Date | undefined = new Date();
   form = new FormGroup({
     selectedDate: new FormControl('')

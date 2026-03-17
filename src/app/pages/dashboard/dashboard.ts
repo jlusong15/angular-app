@@ -2,15 +2,20 @@ import { Component } from '@angular/core';
 import { DataItem } from '@swimlane/ngx-charts';
 import { BarChart } from '@shared/component/bar-chart/bar-chart';
 import { KpiDetails } from './kpi-details/kpi-details';
+import { CalendarDays, LucideAngularModule } from 'lucide-angular';
+import { TicketBreakdownDetails } from "./ticket-breakdown-details/ticket-breakdown-details";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [BarChart, KpiDetails],
+  imports: [LucideAngularModule, BarChart, KpiDetails, TicketBreakdownDetails],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
   standalone: true,
 })
 export class Dashboard {
+  Icons = {
+    CalendarDays
+  }
   kpiData: DataItem[] = [
     { name: 'Jan', value: 120 },
     { name: 'Feb', value: 150 },
