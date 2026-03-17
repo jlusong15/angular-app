@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NavLinks } from '@shared/types/nav.model';
 import { Cat, House, LucideAngularModule, Mail, Menu, SquareCheckBig, X } from 'lucide-angular';
 
 @Component({
@@ -16,21 +17,15 @@ export class SidebarMenuNavV2 {
     Menu,
     Close: X,
   }
+  readonly navigation = NavLinks;
 
-  navigation = [
-    { name: 'Dashboard', icon: House, route: '/dashboard', current: true },
-    { name: 'Tasks', icon: SquareCheckBig, route: '/tasks' },
-    { name: 'Contact', icon: Mail, route: '/contact' },
-  ];
-
-  // Output to parent
   @Output() isOpenChange = new EventEmitter<boolean>();
 
   isOpen = false;
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
-    this.isOpenChange.emit(this.isOpen); // send updated state to parent
+    this.isOpenChange.emit(this.isOpen);
   }
 
 }

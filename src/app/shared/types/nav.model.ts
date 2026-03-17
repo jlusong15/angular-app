@@ -9,6 +9,6 @@ export interface NavModel {
 
 export const NavLinks = [
   { name: 'Dashboard', icon: House, route: '/dashboard', current: true },
-  { name: 'My Tasks', icon: SquareCheckBig, route: '/tasks' },
-  { name: 'Contact Me', icon: Mail, route: '/contact' },
+  { name: 'Tasks', icon: SquareCheckBig, route: '/tasks' },
+  { name: 'Contact', icon: Mail, route: '/contact' },
 ];
