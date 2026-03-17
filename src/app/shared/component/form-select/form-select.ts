@@ -50,7 +50,7 @@ export class FormSelect implements ControlValueAccessor, AfterViewInit {
 
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe((x) => this.onChange(x));
+      .subscribe((x) => this.onChange(x?.select?.code));
   }
 
   value: any;
@@ -58,9 +58,11 @@ export class FormSelect implements ControlValueAccessor, AfterViewInit {
   onChange: any = () => { };
   onTouched: any = () => { };
 
-  writeValue(obj: any): void {
-    console.log('write', obj)
-    this.value = obj;
+  writeValue(value: string): void {
+    this.value = value;
+    const data = this.list?.find((x) => x?.code === value)
+    this.form.get('select')?.setValue(data);
+    this.cd.detectChanges();
   }
 
   registerOnChange(fn: any): void {
@@ -76,7 +78,6 @@ export class FormSelect implements ControlValueAccessor, AfterViewInit {
   }
 
   handleChange(event: any) {
-    console.log('handleChange', event)
     this.value = event.value;
     this.onChange(this.value);
     this.onTouched();

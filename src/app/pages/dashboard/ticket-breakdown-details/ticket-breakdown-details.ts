@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormSelect } from '@shared/component/form-select/form-select';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
 import { Subject, takeUntil } from 'rxjs';
@@ -10,7 +10,7 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrl: './ticket-breakdown-details.css',
   standalone: true
 })
-export class TicketBreakdownDetails implements OnDestroy {
+export class TicketBreakdownDetails implements OnDestroy, AfterViewInit {
   private destroy$ = new Subject<void>();
   projectDropdown = [
     {
@@ -50,6 +50,10 @@ export class TicketBreakdownDetails implements OnDestroy {
       .subscribe((x) => {
         console.log(x);
       });
+  }
+
+  ngAfterViewInit(): void {
+    this.form.get('project')?.setValue('project1')
   }
 
   ngOnDestroy(): void {
