@@ -1,7 +1,7 @@
 
 // Donut Chart Data
 export const DonutChartData = {
-  data: [90, 10],
+  data: [0],
   labels: ['Stories', 'Bugs']
 }
 

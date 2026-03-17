@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef, Component, inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, Input, OnChanges, OnInit, PLATFORM_ID } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
 import { ChartModule } from 'primeng/chart';
 
@@ -10,7 +10,7 @@ import { ChartModule } from 'primeng/chart';
   styleUrl: './donut-chart.css',
   standalone: true
 })
-export class DonutChart implements OnInit {
+export class DonutChart implements OnInit, OnChanges {
   @Input() values: number[] | undefined;
   @Input() labels: string[] | undefined;
   @Input() containerClass: string = '';
@@ -22,10 +22,15 @@ export class DonutChart implements OnInit {
   constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.initChart();
+    this.renderChart();
   }
 
-  initChart() {
+  ngOnChanges(e: any): void {
+    console.log(e)
+    this.renderChart();
+  }
+
+  renderChart() {
     if (isPlatformBrowser(this.platformId)) {
       const documentStyle = getComputedStyle(document.documentElement);
       const textColor = documentStyle.getPropertyValue('--p-text-color');

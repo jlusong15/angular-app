@@ -34,7 +34,7 @@ export class LineChart implements OnInit, OnChanges {
     this.renderChart();
   }
 
-  ngOnChanges(_changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.renderChart();
   }
 

@@ -6,6 +6,7 @@ import { DatePicker } from 'primeng/datepicker';
 import { Subject, takeUntil } from 'rxjs';
 import { DonutChartData, SimpleTableData } from './data';
 import { CalendarRange, LucideAngularModule } from 'lucide-angular';
+import { generateRandomDataset } from '@shared/utils/util';
 
 @Component({
   selector: 'app-kpi-details',
@@ -27,6 +28,17 @@ export class KpiDetails implements OnDestroy {
   donutChart = DonutChartData
   simpleTable = SimpleTableData
 
+  get StoriesValue() {
+    return this.donutChart?.data?.[0] ?? 0
+  }
+
+  get BugsValue() {
+    return this.donutChart?.data?.[1] ?? 0
+  }
+
+  get OverallTickets() {
+    return this.StoriesValue + this.BugsValue
+  }
 
   constructor(private fb: UntypedFormBuilder) {
     this.form = this.fb.group({
@@ -35,13 +47,16 @@ export class KpiDetails implements OnDestroy {
 
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe((x) => {
-        console.log(x);
-      });
+      .subscribe(() => this.refreshDataset());
+
+    this.refreshDataset();
   }
 
-  onDateSelected(date: Date) {
-    console.log('Date selected:', date);
+  refreshDataset() {
+    this.donutChart = {
+      labels: this.donutChart.labels,
+      data: generateRandomDataset(2)
+    }
   }
 
   ngOnDestroy(): void {
