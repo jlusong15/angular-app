@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef, Component, inject, Input, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
 import { ChartModule } from 'primeng/chart';
 
@@ -10,10 +10,10 @@ import { ChartModule } from 'primeng/chart';
   styleUrl: './donut-chart.css',
   standalone: true
 })
-export class DonutChart {
+export class DonutChart implements OnInit {
   @Input() values: number[] | undefined;
   @Input() labels: string[] | undefined;
-  @Input() chartWidth: string = '';
+  @Input() containerClass: string = '';
   @Input() showLegend: boolean = true;
   data: ChartData<'doughnut'> | undefined;
   options: ChartOptions<'doughnut'> | undefined;

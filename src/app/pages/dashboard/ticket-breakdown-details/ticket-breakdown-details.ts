@@ -1,11 +1,13 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormSelect } from '@shared/component/form-select/form-select';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
+import { FormSelect } from '@shared/component/form-select/form-select';
+import { LineChart } from '@shared/component/line-chart/line-chart';
+import { generateRandomDataset } from '@shared/utils/util';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-ticket-breakdown-details',
-  imports: [FormSelect, FormsModule, ReactiveFormsModule],
+  imports: [FormSelect, FormsModule, ReactiveFormsModule, LineChart],
   templateUrl: './ticket-breakdown-details.html',
   styleUrl: './ticket-breakdown-details.css',
   standalone: true
@@ -39,6 +41,20 @@ export class TicketBreakdownDetails implements OnDestroy, AfterViewInit {
     project: new FormControl('')
   });
 
+  chartLabel = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  taskData = [{
+    label: 'Tasks',
+    data: [0]
+  }]
+  bugsData = [{
+    label: 'Bugs',
+    data: [0]
+  }]
+  supportData = [{
+    label: 'Support',
+    data: [0]
+  }]
+
 
   constructor(private fb: UntypedFormBuilder) {
     this.form = this.fb.group({
@@ -47,13 +63,27 @@ export class TicketBreakdownDetails implements OnDestroy, AfterViewInit {
 
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe((x) => {
-        console.log(x);
-      });
+      .subscribe(() => this.refreshDataset());
   }
 
   ngAfterViewInit(): void {
     this.form.get('project')?.setValue('project1')
+    this.refreshDataset();
+  }
+
+  refreshDataset() {
+    this.taskData = [{
+      label: 'Tasks',
+      data: generateRandomDataset(12)
+    }]
+    this.bugsData = [{
+      label: 'Bugs',
+      data: generateRandomDataset(12)
+    }]
+    this.supportData = [{
+      label: 'Support',
+      data: generateRandomDataset(12)
+    }]
   }
 
   ngOnDestroy(): void {

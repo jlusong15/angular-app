@@ -5,3 +5,45 @@
     [list]="projectDropdown"
   ></app-form-select>
 </form>
+
+<div class="w-full mt-5">
+  <span class="font-bold text-neutralGray-500 mb-5">Tasks</span>
+  <div class="d-block w-full mt-5">
+    <app-line-chart
+      [labels]="chartLabel"
+      [values]="taskData"
+      [showLegend]="false"
+      [showY]="false"
+      [showXGrid]="false"
+      containerClass="h-[120px]"
+    ></app-line-chart>
+  </div>
+</div>
+
+<div class="w-full mt-5">
+  <span class="font-bold text-neutralGray-500 mb-5">Bugs</span>
+  <div class="d-block w-full mt-5">
+    <app-line-chart
+      [labels]="chartLabel"
+      [values]="bugsData"
+      [showLegend]="false"
+      [showY]="false"
+      [showXGrid]="false"
+      containerClass="h-[120px]"
+    ></app-line-chart>
+  </div>
+</div>
+
+<div class="w-full mt-5">
+  <span class="font-bold text-neutralGray-500 mb-5">Support</span>
+  <div class="d-block w-full mt-5">
+    <app-line-chart
+      [labels]="chartLabel"
+      [values]="supportData"
+      [showLegend]="false"
+      [showY]="false"
+      [showXGrid]="false"
+      containerClass="h-[120px]"
+    ></app-line-chart>
+  </div>
+</div>
