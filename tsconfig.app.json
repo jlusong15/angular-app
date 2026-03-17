@@ -11,6 +11,7 @@
       // "@directives/*": ["./src/app/shared/directives/*"],
     }
   },
+  "lib": ["es2022", "dom"],
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.spec.ts"]
 }

@@ -1,7 +1,12 @@
-<app-date-picker
-  [(value)]="selectedDate"
-  placeholder="Choose your date"
-  (valueChange)="onDateSelected($event)"
-></app-date-picker>
-
-<p>Selected Date: {{ selectedDate | date:'fullDate' }}</p>
+<form [formGroup]="form">
+  <p-datepicker
+    formControlName="selectedDate"
+    [iconDisplay]="'input'"
+    [showIcon]="true"
+    class="text-gray-500"
+  >
+    <ng-template #inputicon let-clickCallBack="clickCallBack" class="">
+      <i class="pi pi-calendar" (click)="clickCallBack($event)"></i>
+    </ng-template>
+  </p-datepicker>
+</form>

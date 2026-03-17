@@ -1,0 +1,8 @@
+::ng-deep .p-datepicker .p-inputtext {
+  padding-left: 2rem;
+}
+
+::ng-deep .p-datepicker .p-datepicker-input-icon-container {
+  left: 0.5rem;
+  right: auto;
+}
