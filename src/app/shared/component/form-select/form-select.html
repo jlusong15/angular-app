@@ -1,9 +1,10 @@
 <form [formGroup]="form">
   <p-select
+    class="w-full"
+    optionLabel="name"
     formControlName="select"
     [options]="list"
-    optionLabel="name"
     [placeholder]="placeholder"
-    class="w-full"
+    [invalid]="isInvalid('switch')"
   />
 </form>

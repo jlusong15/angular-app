@@ -1,0 +1,3 @@
+::ng-deep .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider {
+  @apply bg-primary;
+}

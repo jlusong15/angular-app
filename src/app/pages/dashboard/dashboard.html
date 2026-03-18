@@ -38,7 +38,7 @@
       <div class="flex justify-between pl-5 pr-5 pb-5">
         <div class="w-[60%]">
           <h3 class="d-block font-bold">Year 2023-2024</h3>
-          <span class="d-block text-neutral-500">06/01/2023 - 05/31/2024</span>
+          <span class="d-block text-neutralGray-500">06/01/2023 - 05/31/2024</span>
           <div class="d-block">
             <lucide-icon
               [img]="Icons.CalendarDays"
@@ -50,16 +50,15 @@
         <div class="w-[40%] flex flex-col gap-2.5">
           <div class="w-full bg-neutralGray-100 flex flex-col rounded-[10px] p-1.5">
             <span class="d-block text-[48px] leading-[50px] font-bold">32</span>
-            <span class="d-block text-neutral-500">COMPLETED</span>
+            <span class="d-block text-neutralGray-500">COMPLETED</span>
           </div>
           <div class="w-full bg-neutralGray-100 flex flex-col rounded-[10px] p-1.5">
             <span class="d-block text-[48px] leading-[50px] font-bold">10</span>
-            <span class="d-block text-neutral-500">PENDING</span>
+            <span class="d-block text-neutralGray-500">PENDING</span>
           </div>
         </div>
       </div>
     </div>
-
 
     <div class="bg-white w-full border shadow-sm rounded-md">
       <div class="px-6 pt-6 pb-2">
@@ -69,14 +68,38 @@
           <app-ticket-breakdown-details></app-ticket-breakdown-details>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class="d-flex w-full max-w-[33%]">
     <!-- Column 3 -->
     <div class="bg-white w-full border shadow-sm rounded-md">
-      <div class="p-6">Column 3</div>
+      <div class="bg-white w-full border shadow-sm rounded-md">
+        <div class="px-6 pt-6 pb-2">
+          <h3 class="mb-2.5">Time Spent</h3>
+        </div>
+        <div class="flex flex-col gap-3 mt-5">
+          <div class="flex justify-between pl-5 pr-5 pb-5">
+            <div class="flex flex-col">
+              <span class="text-[48px] leading-[50px] font-bold">150</span>
+              <span class="text-neutralGray-500">REMAINING HOURS</span>
+            </div>
+            <div class="flex flex-col">
+              <div class="flex flex-col rounded-[10px] p-1.5 text-right">
+                <span class="d-block text-[24px] leading-[32px] font-bold">32</span>
+                <span class="d-block text-neutralGray-500">Estimated Hours</span>
+              </div>
+              <div class="flex flex-col rounded-[10px] p-1.5 text-right">
+                <span class="d-block text-[24px] leading-[32px] font-bold">10</span>
+                <span class="d-block text-neutralGray-500">Logged Hours</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-full mt-5">
+            <app-time-spent-details></app-time-spent-details>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

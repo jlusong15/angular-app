@@ -1,30 +1,23 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
-import { SelectModule } from 'primeng/select';
 import { Subject, takeUntil } from 'rxjs';
-interface FormSelectModel {
-  name: string;
-  code: string;
-}
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 
 @Component({
-  selector: 'app-form-select',
-  imports: [SelectModule, ReactiveFormsModule],
-  templateUrl: './form-select.html',
-  styleUrl: './form-select.css',
-  standalone: true,
+  selector: 'app-form-switch',
+  imports: [ToggleSwitchModule, ReactiveFormsModule],
+  templateUrl: './form-switch.html',
+  styleUrl: './form-switch.css',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormSelect),
+      useExisting: forwardRef(() => FormSwitch),
       multi: true,
     },
   ],
 })
-export class FormSelect implements ControlValueAccessor, AfterViewInit {
+export class FormSwitch implements ControlValueAccessor, AfterViewInit {
   private destroy$ = new Subject<void>();
-  @Input() list: FormSelectModel[] = [];
-  @Input() placeholder: string = 'Select';
   @Input() disabled: boolean = false;
 
   @Output() onValueChanged = new EventEmitter<any>();
@@ -34,14 +27,14 @@ export class FormSelect implements ControlValueAccessor, AfterViewInit {
   @HostBinding('attr.disabled') attrDisabled = null;
 
   form: FormGroup = new FormGroup({
-    select: new FormControl('')
+    switch: new FormControl('')
   });
   formSubmitted: boolean = false;
   isDisabled: boolean = false;
 
   constructor(private fb: UntypedFormBuilder, private cd: ChangeDetectorRef) {
     this.form = this.fb.group({
-      select: ['']
+      switch: ['']
     });
   }
 
@@ -54,7 +47,7 @@ export class FormSelect implements ControlValueAccessor, AfterViewInit {
 
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe((x) => this.onChange(x?.select?.code));
+      .subscribe((x) => this.onChange(x?.switch));
   }
 
   value: any;
@@ -63,9 +56,8 @@ export class FormSelect implements ControlValueAccessor, AfterViewInit {
   onTouched: any = () => { };
 
   writeValue(value: string): void {
-    const data = this.list?.find((x) => x?.code === value)
-    this.value = data;
-    this.form.get('select')?.setValue(data);
+    this.value = value;
+    this.form.get('switch')?.setValue(value);
     this.cd.detectChanges();
   }
 
