@@ -39,7 +39,15 @@ export class TimeSpentDetails {
 
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this.refreshDataset());
+      .subscribe((form) => {
+        console.log(form)
+        if ('includeBugs' in form) {
+          this.refreshPast6Months()
+        }
+        if ('project' in form) {
+          this.refreshProjectTable()
+        }
+      });
   }
 
   ngAfterViewInit(): void {
@@ -47,10 +55,19 @@ export class TimeSpentDetails {
   }
 
   refreshDataset() {
+    this.refreshPast6Months();
+    this.refreshProjectTable();
+  }
+
+  refreshPast6Months() {
     this.lineChartData = this.lineChartData?.map((data) => ({
       ...data,
       data: generateRandomDataset(6)
     }))
+  }
+
+  refreshProjectTable() {
+    // @@@TODO
   }
 
   ngOnDestroy(): void {
