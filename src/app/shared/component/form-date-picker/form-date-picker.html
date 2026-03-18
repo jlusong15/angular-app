@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <p-datepicker
+    formControlName="selectedDate"
+    [iconDisplay]="'input'"
+    [showIcon]="true"
+    class="text-gray-500 text-sm"
+    dateFormat="MM d, yy"
+  >
+    <ng-template #inputicon let-clickCallBack="clickCallBack" class="">
+      <lucide-icon
+        [img]="Icons.CalendarRange"
+        strokeWidth="1"
+        class="text-gray-500 size-4"
+      ></lucide-icon>
+    </ng-template>
+  </p-datepicker>
+  </form>

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, Output } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 import { Subject, takeUntil } from 'rxjs';
@@ -21,7 +21,7 @@ interface FormSelectModel {
     },
   ],
 })
-export class FormSelect implements ControlValueAccessor, AfterViewInit {
+export class FormSelect implements ControlValueAccessor, AfterViewInit, OnDestroy {
   private destroy$ = new Subject<void>();
   @Input() list: FormSelectModel[] = [];
   @Input() placeholder: string = 'Select';
@@ -29,8 +29,6 @@ export class FormSelect implements ControlValueAccessor, AfterViewInit {
 
   @Output() onValueChanged = new EventEmitter<any>();
 
-  @HostBinding('attr.tabindex') attrTabindex = null;
-  @HostBinding('attr.id') attrId = null;
   @HostBinding('attr.disabled') attrDisabled = null;
 
   form: FormGroup = new FormGroup({

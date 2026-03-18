@@ -1,46 +1,33 @@
-<div class="p-5 flex flex-col gap-5" [formGroup]="form">
-  <div class="flex items-center">
-    <app-form-switch formControlName="includeBugs" class="mr-3 pt-2"></app-form-switch>
-    <span>Include Bugs</span>
+<form [formGroup]="form">
+  <div class="p-5 flex flex-col gap-5">
+    <div class="flex items-center">
+      <app-form-switch formControlName="includeBugs" class="mr-3 pt-2"></app-form-switch>
+      <span>Include Bugs</span>
+    </div>
+    <div class="w-full">
+      <span class="text-sm font-bold text-neutralGray-500">Past 6 months</span>
+    </div>
+    <div class="w-full">
+      <app-line-chart
+        [labels]="chartLabel"
+        [values]="lineChartData"
+        [showLegend]="false"
+        [showYTick]="false"
+        [showXGrid]="false"
+        containerClass="h-[220px]"
+      ></app-line-chart>
+    </div>
+    <div class="w-full">
+      <span class="text-sm font-bold text-neutralGray-500">By Project</span>
+    </div>
+    <div class="w-full">
+      <app-form-date-picker formControlName="project"></app-form-date-picker>
+    </div>
+    <div class="w-full">
+      <app-simple-table
+        [tableData]="simpleTable.data"
+        [columns]="simpleTable.columns"
+      ></app-simple-table>
+    </div>
   </div>
-  <div class="w-full">
-    <span class="text-sm font-bold text-neutralGray-500">Past 6 months</span>
-  </div>
-  <div class="w-full">
-    <app-line-chart
-      [labels]="chartLabel"
-      [values]="lineChartData"
-      [showLegend]="false"
-      [showYTick]="false"
-      [showXGrid]="false"
-      containerClass="h-[220px]"
-    ></app-line-chart>
-  </div>
-  <div class="w-full">
-    <span class="text-sm font-bold text-neutralGray-500">By Project</span>
-  </div>
-  <div class="w-full">
-    date picker here
-    <!-- <p-datepicker
-      formControlName="selectedDate"
-      [iconDisplay]="'input'"
-      [showIcon]="true"
-      class="text-gray-500 text-sm"
-      dateFormat="MM d, yy"
-    >
-      <ng-template #inputicon let-clickCallBack="clickCallBack" class="">
-        <lucide-icon
-          [img]="Icons.CalendarRange"
-          strokeWidth="1"
-          class="text-gray-500 size-4"
-        ></lucide-icon>
-      </ng-template>
-    </p-datepicker> -->
-  </div>
-  <div class="w-full">
-    <app-simple-table
-      [tableData]="simpleTable.data"
-      [columns]="simpleTable.columns"
-    ></app-simple-table>
-  </div>
-</div>
+</form>

@@ -6,10 +6,11 @@ import { SimpleTable } from '@shared/component/simple-table/simple-table';
 import { generateRandomDataset } from '@shared/utils/util';
 import { Subject, takeUntil } from 'rxjs';
 import { TimeSpentSimpleTableData } from './data';
+import { FormDatePicker } from '@shared/component/form-date-picker/form-date-picker';
 
 @Component({
   selector: 'app-time-spent-details',
-  imports: [FormSwitch, LineChart, SimpleTable, ReactiveFormsModule],
+  imports: [FormSwitch, FormDatePicker, LineChart, SimpleTable, ReactiveFormsModule],
   templateUrl: './time-spent-details.html',
   styleUrl: './time-spent-details.css',
   standalone: true
@@ -17,7 +18,8 @@ import { TimeSpentSimpleTableData } from './data';
 export class TimeSpentDetails {
   private destroy$ = new Subject<void>();
   form = new FormGroup({
-    includeBugs: new FormControl('')
+    includeBugs: new FormControl(''),
+    project: new FormControl('')
   });
   chartLabel = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
   lineChartData = [{
@@ -34,7 +36,8 @@ export class TimeSpentDetails {
 
   constructor(private fb: UntypedFormBuilder) {
     this.form = this.fb.group({
-      includeBugs: [false]
+      includeBugs: [false],
+      project: [new Date()]
     });
 
     this.form.valueChanges

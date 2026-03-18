@@ -1,22 +1,27 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, Output } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { CalendarRange, LucideAngularModule } from 'lucide-angular';
+import { DatePicker } from 'primeng/datepicker';
 import { Subject, takeUntil } from 'rxjs';
-import { ToggleSwitchModule } from 'primeng/toggleswitch';
 
 @Component({
-  selector: 'app-form-switch',
-  imports: [ToggleSwitchModule, ReactiveFormsModule],
-  templateUrl: './form-switch.html',
-  styleUrl: './form-switch.css',
+  selector: 'app-form-date-picker',
+  imports: [ReactiveFormsModule, DatePicker, LucideAngularModule],
+  templateUrl: './form-date-picker.html',
+  styleUrl: './form-date-picker.css',
+  standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormSwitch),
+      useExisting: forwardRef(() => FormDatePicker),
       multi: true,
     },
   ],
 })
-export class FormSwitch implements ControlValueAccessor, AfterViewInit, OnDestroy {
+export class FormDatePicker implements ControlValueAccessor, AfterViewInit, OnDestroy {
+  readonly Icons = {
+    CalendarRange
+  }
   private destroy$ = new Subject<void>();
   @Input() disabled: boolean = false;
 
@@ -25,14 +30,14 @@ export class FormSwitch implements ControlValueAccessor, AfterViewInit, OnDestro
   @HostBinding('attr.disabled') attrDisabled = null;
 
   form: FormGroup = new FormGroup({
-    switch: new FormControl('')
+    selectedDate: new FormControl('')
   });
   formSubmitted: boolean = false;
   isDisabled: boolean = false;
 
   constructor(private fb: UntypedFormBuilder, private cd: ChangeDetectorRef) {
     this.form = this.fb.group({
-      switch: ['']
+      selectedDate: ['']
     });
   }
 
@@ -45,7 +50,7 @@ export class FormSwitch implements ControlValueAccessor, AfterViewInit, OnDestro
 
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe((x) => this.onChange(x?.switch));
+      .subscribe((form) => this.onChange(form?.selectedDate));
   }
 
   value: any;
@@ -55,7 +60,7 @@ export class FormSwitch implements ControlValueAccessor, AfterViewInit, OnDestro
 
   writeValue(value: string): void {
     this.value = value;
-    this.form.get('switch')?.setValue(value);
+    this.form.get('selectedDate')?.setValue(value);
     this.cd.detectChanges();
   }
 
