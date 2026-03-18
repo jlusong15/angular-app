@@ -4,10 +4,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBu
 import { DonutChart } from '@shared/component/donut-chart/donut-chart';
 import { FormDatePicker } from '@shared/component/form-date-picker/form-date-picker';
 import { SimpleTable } from '@shared/component/simple-table/simple-table';
+import { ProjectList, ProjectModel } from '@shared/types/project.model';
 import { generateRandomDataset } from '@shared/utils/util';
 import { CalendarRange, LucideAngularModule } from 'lucide-angular';
 import { Subject, takeUntil } from 'rxjs';
-import { DonutChartData, SimpleTableData } from './data';
 
 @Component({
   selector: 'app-kpi-details',
@@ -22,12 +22,22 @@ export class KpiDetails implements OnDestroy {
     CalendarRange
   }
   date: Date | undefined = new Date();
+  donutChart = {
+    data: [0],
+    labels: ['Stories', 'Bugs']
+  }
+  simpleTable = {
+    data: ProjectList,
+    columns: [
+      { field: 'projectName', header: 'Project Name', sortable: true },
+      { field: 'stories', header: 'Stories' },
+      { field: 'bugs', header: 'Bug' },
+      { field: 'total', header: 'Total' }
+    ]
+  }
   form = new FormGroup({
     selectedDate: new FormControl('')
   });
-
-  donutChart = DonutChartData
-  simpleTable = SimpleTableData
 
   get StoriesValue() {
     return this.donutChart?.data?.[0] ?? 0
@@ -54,10 +64,31 @@ export class KpiDetails implements OnDestroy {
   }
 
   refreshDataset() {
+    this.refreshDonutChart();
+    this.refreshProjectTable();
+  }
+
+  refreshDonutChart() {
     this.donutChart = {
       labels: this.donutChart.labels,
-      data: generateRandomDataset(2, 2000)
+      data: generateRandomDataset(this.donutChart.labels?.length, 2000)
     }
+  }
+
+  refreshProjectTable() {
+    const len = ProjectList?.length;
+    const newStories = generateRandomDataset(len)
+    const newBugs = generateRandomDataset(len)
+    const data = this.simpleTable.data?.map((x, index) => ({
+      ...x,
+      stories: newStories[index],
+      bugs: newBugs[index],
+      total: newStories[index] + newBugs[index]
+    })) as ProjectModel[];
+    this.simpleTable = {
+      ...this.simpleTable,
+      data
+    };
   }
 
   ngOnDestroy(): void {

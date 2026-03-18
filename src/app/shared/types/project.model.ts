@@ -5,33 +5,40 @@ export interface ProjectModel {
   total: number
 }
 
-export const ProjectList: ProjectModel[] = [{
-  projectName: 'Project 1',
+export interface ProjectDropdownModel {
+  name: string;
+  code: string;
+}
+
+export const ProjectDropdownList: ProjectDropdownModel[] = [
+  {
+    name: 'Project 1',
+    code: 'project1'
+  },
+  {
+    name: 'Project 2',
+    code: 'project2'
+  },
+  {
+    name: 'Project 3',
+    code: 'project3'
+  },
+  {
+    name: 'Project 4',
+    code: 'project4'
+  },
+  {
+    name: 'Project 5',
+    code: 'project5'
+  },
+]
+
+export const ProjectList: ProjectModel[] = ProjectDropdownList?.map((p) => ({
+  projectName: p.name,
   stories: 0,
   bugs: 0,
-  total: 0,
-},
-{
-  projectName: 'Project 2',
-  stories: 0,
-  bugs: 0,
-  total: 0,
-},
-{
-  projectName: 'Project 3',
-  stories: 0,
-  bugs: 0,
-  total: 0,
-},
-{
-  projectName: 'Project 4',
-  stories: 0,
-  bugs: 0,
-  total: 0,
-},
-{
-  projectName: 'Project 5',
-  stories: 0,
-  bugs: 0,
-  total: 0,
-}]
+  total: 0
+}))
+
+export const MonthsList: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export const SixMonthsList: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];

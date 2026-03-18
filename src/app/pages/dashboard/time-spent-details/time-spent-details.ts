@@ -4,7 +4,7 @@ import { FormDatePicker } from '@shared/component/form-date-picker/form-date-pic
 import { FormSwitch } from '@shared/component/form-switch/form-switch';
 import { LineChart } from '@shared/component/line-chart/line-chart';
 import { SimpleTable } from '@shared/component/simple-table/simple-table';
-import { ProjectList, ProjectModel } from '@shared/types/project.model';
+import { ProjectList, ProjectModel, SixMonthsList } from '@shared/types/project.model';
 import { generateRandomDataset } from '@shared/utils/util';
 import { Subject } from 'rxjs';
 
@@ -17,11 +17,7 @@ import { Subject } from 'rxjs';
 })
 export class TimeSpentDetails {
   private destroy$ = new Subject<void>();
-  form = new FormGroup({
-    includeBugs: new FormControl(''),
-    project: new FormControl('')
-  });
-  chartLabel = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+  chartLabel = SixMonthsList;
   lineChartData = [{
     label: 'Time Spent',
     data: [0],
@@ -32,11 +28,15 @@ export class TimeSpentDetails {
     data: ProjectList,
     columns: [
       { field: 'projectName', header: 'Project Name', sortable: true },
-      { field: 'stories', header: 'Stories', sortable: false },
-      { field: 'bugs', header: 'Bug', sortable: false },
+      { field: 'stories', header: 'Stories' },
+      { field: 'bugs', header: 'Bug' },
       { field: 'total', header: 'Total' }
     ]
   }
+  form = new FormGroup({
+    includeBugs: new FormControl(''),
+    project: new FormControl('')
+  });
 
   get IncludeBugsFC() {
     return this.form.get('includeBugs') as FormControl;
@@ -73,13 +73,14 @@ export class TimeSpentDetails {
   refreshPast6Months() {
     this.lineChartData = this.lineChartData?.map((data) => ({
       ...data,
-      data: generateRandomDataset(6)
+      data: generateRandomDataset(this.chartLabel?.length)
     }))
   }
 
   refreshProjectTable() {
-    const newStories = generateRandomDataset(5)
-    const newBugs = generateRandomDataset(5)
+    const len = ProjectList?.length;
+    const newStories = generateRandomDataset(len)
+    const newBugs = generateRandomDataset(len)
     const data = this.simpleTable.data?.map((x, index) => ({
       ...x,
       stories: newStories[index],

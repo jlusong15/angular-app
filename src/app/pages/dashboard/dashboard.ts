@@ -7,6 +7,7 @@ import { CalendarDays, LucideAngularModule } from 'lucide-angular';
 import { KpiDetails } from './kpi-details/kpi-details';
 import { TicketBreakdownDetails } from "./ticket-breakdown-details/ticket-breakdown-details";
 import { TimeSpentDetails } from './time-spent-details/time-spent-details';
+import { MonthsList } from '@shared/types/project.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,20 +20,7 @@ export class Dashboard {
   Icons = {
     CalendarDays
   }
-  kpiData: DataItem[] = [
-    { name: 'Jan', value: 0 },
-    { name: 'Feb', value: 0 },
-    { name: 'Mar', value: 0 },
-    { name: 'Apr', value: 0 },
-    { name: 'May', value: 0 },
-    { name: 'Jun', value: 0 },
-    { name: 'Jul', value: 0 },
-    { name: 'Aug', value: 0 },
-    { name: 'Sep', value: 0 },
-    { name: 'Oct', value: 0 },
-    { name: 'Nov', value: 0 },
-    { name: 'Dec', value: 0 }
-  ];
+  kpiData: DataItem[] = MonthsList?.map((x) => ({ name: x, value: 0 }));
   kPiTotalFinishedTickets = 0;
   annualMilestoneCompleted = 0;
   annualMilestonePending = 0;
@@ -51,7 +39,7 @@ export class Dashboard {
   }
 
   refreshKpiData() {
-    const data = generateRandomDataset(12, 1000);
+    const data = generateRandomDataset(this.kpiData?.length, 1000);
     this.kpiData = this.kpiData?.map((x, i) => ({ ...x, value: data?.[i] }));
     this.kPiTotalFinishedTickets = this.kpiData.reduce((sum, item) => sum + item.value, 0);
   }
