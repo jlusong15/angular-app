@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { FormDatePicker } from '@shared/component/form-date-picker/form-date-picker';
 import { FormSwitch } from '@shared/component/form-switch/form-switch';
 import { LineChart } from '@shared/component/line-chart/line-chart';
 import { SimpleTable } from '@shared/component/simple-table/simple-table';
+import { ProjectList, ProjectModel } from '@shared/types/project.model';
 import { generateRandomDataset } from '@shared/utils/util';
-import { Subject, takeUntil } from 'rxjs';
-import { TimeSpentSimpleTableData } from './data';
-import { FormDatePicker } from '@shared/component/form-date-picker/form-date-picker';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-time-spent-details',
@@ -28,7 +28,15 @@ export class TimeSpentDetails {
     fill: true,
     backgroundColor: true
   }]
-  simpleTable = TimeSpentSimpleTableData
+  simpleTable = {
+    data: ProjectList,
+    columns: [
+      { field: 'projectName', header: 'Project Name', sortable: true },
+      { field: 'stories', header: 'Stories', sortable: false },
+      { field: 'bugs', header: 'Bug', sortable: false },
+      { field: 'total', header: 'Total' }
+    ]
+  }
 
   get IncludeBugsFC() {
     return this.form.get('includeBugs') as FormControl;
@@ -40,17 +48,17 @@ export class TimeSpentDetails {
       project: [new Date()]
     });
 
-    this.form.valueChanges
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((form) => {
-        console.log(form)
-        if ('includeBugs' in form) {
-          this.refreshPast6Months()
-        }
-        if ('project' in form) {
+
+    Object.keys(this.form.controls).forEach(controlName => {
+      this.form.get(controlName)?.valueChanges.subscribe(value => {
+        if (controlName === 'project') {
           this.refreshProjectTable()
         }
+        if (controlName === 'includeBugs') {
+          this.refreshPast6Months()
+        }
       });
+    });
   }
 
   ngAfterViewInit(): void {
@@ -70,7 +78,18 @@ export class TimeSpentDetails {
   }
 
   refreshProjectTable() {
-    // @@@TODO
+    const newStories = generateRandomDataset(5)
+    const newBugs = generateRandomDataset(5)
+    const data = this.simpleTable.data?.map((x, index) => ({
+      ...x,
+      stories: newStories[index],
+      bugs: newBugs[index],
+      total: newStories[index] + newBugs[index]
+    })) as ProjectModel[];
+    this.simpleTable = {
+      ...this.simpleTable,
+      data
+    };
   }
 
   ngOnDestroy(): void {
