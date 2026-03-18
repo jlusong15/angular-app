@@ -12,23 +12,23 @@ export interface ProjectDropdownModel {
 
 export const ProjectDropdownList: ProjectDropdownModel[] = [
   {
-    name: 'Project 1',
+    name: 'AZA Project',
     code: 'project1'
   },
   {
-    name: 'Project 2',
+    name: 'BNA',
     code: 'project2'
   },
   {
-    name: 'Project 3',
+    name: 'Direct Hire',
     code: 'project3'
   },
   {
-    name: 'Project 4',
+    name: 'Cat Corp.',
     code: 'project4'
   },
   {
-    name: 'Project 5',
+    name: 'Project 5th',
     code: 'project5'
   },
 ]
