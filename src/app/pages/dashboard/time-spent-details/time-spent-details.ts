@@ -12,7 +12,6 @@ import { Subject } from 'rxjs';
   selector: 'app-time-spent-details',
   imports: [FormSwitch, FormDatePicker, LineChart, SimpleTable, ReactiveFormsModule],
   templateUrl: './time-spent-details.html',
-  styleUrl: './time-spent-details.css',
   standalone: true
 })
 export class TimeSpentDetails {
@@ -44,7 +43,7 @@ export class TimeSpentDetails {
 
   constructor(private fb: UntypedFormBuilder) {
     this.form = this.fb.group({
-      includeBugs: [false],
+      includeBugs: [true],
       project: [new Date()]
     });
 

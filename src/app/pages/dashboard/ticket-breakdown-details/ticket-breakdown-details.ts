@@ -10,7 +10,6 @@ import { Subject, takeUntil } from 'rxjs';
   selector: 'app-ticket-breakdown-details',
   imports: [FormSelect, FormsModule, ReactiveFormsModule, LineChart],
   templateUrl: './ticket-breakdown-details.html',
-  styleUrl: './ticket-breakdown-details.css',
   standalone: true
 })
 export class TicketBreakdownDetails implements OnDestroy, AfterViewInit {

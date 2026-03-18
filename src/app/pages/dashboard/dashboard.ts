@@ -14,7 +14,6 @@ import { TimeSpentDetails } from './time-spent-details/time-spent-details';
   selector: 'app-dashboard',
   imports: [LucideAngularModule, BarChart, KpiDetails, TicketBreakdownDetails, TimeSpentDetails, DecimalPipe],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
   standalone: true,
 })
 export class Dashboard {

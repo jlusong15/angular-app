@@ -17,7 +17,6 @@ export interface LineChartDataModel {
   selector: 'app-line-chart',
   imports: [ChartModule],
   templateUrl: './line-chart.html',
-  styleUrl: './line-chart.css',
   standalone: true
 })
 export class LineChart implements OnInit, OnChanges {

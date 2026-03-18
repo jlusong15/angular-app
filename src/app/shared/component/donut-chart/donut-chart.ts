@@ -7,7 +7,6 @@ import { ChartModule } from 'primeng/chart';
   selector: 'app-donut-chart',
   imports: [ChartModule],
   templateUrl: './donut-chart.html',
-  styleUrl: './donut-chart.css',
   standalone: true
 })
 export class DonutChart implements OnInit, OnChanges {

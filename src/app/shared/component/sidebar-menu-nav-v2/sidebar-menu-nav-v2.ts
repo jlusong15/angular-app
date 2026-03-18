@@ -8,7 +8,6 @@ import { Cat, LucideAngularModule, Menu, X } from 'lucide-angular';
   selector: 'app-sidebar-menu-nav-v2',
   imports: [CommonModule, RouterModule, LucideAngularModule],
   templateUrl: './sidebar-menu-nav-v2.html',
-  styleUrl: './sidebar-menu-nav-v2.css',
   standalone: true
 })
 export class SidebarMenuNavV2 {

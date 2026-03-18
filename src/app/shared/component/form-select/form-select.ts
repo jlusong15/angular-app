@@ -11,7 +11,6 @@ interface FormSelectModel {
   selector: 'app-form-select',
   imports: [SelectModule, ReactiveFormsModule],
   templateUrl: './form-select.html',
-  styleUrl: './form-select.css',
   standalone: true,
   providers: [
     {

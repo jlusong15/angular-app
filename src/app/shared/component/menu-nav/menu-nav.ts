@@ -9,7 +9,6 @@ import { NavModel } from '@shared/types/nav.model';
   standalone: true,
   imports: [CommonModule, RouterModule, LucideAngularModule],
   templateUrl: './menu-nav.html',
-  styleUrl: './menu-nav.css',
 })
 export class MenuNav {
   readonly CatIcon = Cat;
