@@ -1,17 +1,17 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { DonutChart } from '@shared/component/donut-chart/donut-chart';
+import { FormDatePicker } from '@shared/component/form-date-picker/form-date-picker';
 import { SimpleTable } from '@shared/component/simple-table/simple-table';
-import { DatePicker } from 'primeng/datepicker';
+import { generateRandomDataset } from '@shared/utils/util';
+import { CalendarRange, LucideAngularModule } from 'lucide-angular';
 import { Subject, takeUntil } from 'rxjs';
 import { DonutChartData, SimpleTableData } from './data';
-import { CalendarRange, LucideAngularModule } from 'lucide-angular';
-import { generateRandomDataset } from '@shared/utils/util';
-import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-kpi-details',
-  imports: [FormsModule, ReactiveFormsModule, DatePicker, DonutChart, SimpleTable, LucideAngularModule, DecimalPipe],
+  imports: [FormsModule, FormDatePicker, ReactiveFormsModule, DonutChart, SimpleTable, LucideAngularModule, DecimalPipe],
   templateUrl: './kpi-details.html',
   styleUrl: './kpi-details.css',
   standalone: true
