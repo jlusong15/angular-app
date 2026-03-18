@@ -1,8 +1,6 @@
 <div class="flex">
   <!-- Sidebar -->
-  <app-sidebar-menu-nav-v2
-    (isOpenChange)="onSidebarToggle($event)"
-  ></app-sidebar-menu-nav-v2>
+  <app-sidebar-menu-nav-v2 (isOpenChange)="onSidebarToggle($event)"></app-sidebar-menu-nav-v2>
 
   <!-- Main Content -->
   <main
@@ -11,5 +9,8 @@
     class="transition-all duration-300 flex-1 p-4"
   >
     <router-outlet></router-outlet>
+
+    <!-- Footer -->
+    <footer class="text-gray-400 italic mt-5 text-xs">My Angular App by Jennifer Bautista</footer>
   </main>
 </div>
