@@ -33,15 +33,28 @@ export class Dashboard {
     { name: 'Nov', value: 0 },
     { name: 'Dec', value: 0 }
   ];
-  totalFinishedTickets = 0;
+  kPiTotalFinishedTickets = 0;
+  annualMilestoneCompleted = 0;
+  annualMilestonePending = 0;
 
   constructor() {
     this.refreshDataset()
   }
 
   refreshDataset() {
+    this.refreshKpiData();
+    this.refreshAnnualMilestoneData();
+  }
+
+  refreshKpiData() {
     const data = generateRandomDataset(12);
     this.kpiData = this.kpiData?.map((x, i) => ({ ...x, value: data?.[i] }))
-    this.totalFinishedTickets = this.kpiData.reduce((sum, item) => sum + item.value, 0);
+    this.kPiTotalFinishedTickets = this.kpiData.reduce((sum, item) => sum + item.value, 0);
+  }
+
+  refreshAnnualMilestoneData() {
+    const data = generateRandomDataset(2);
+    this.annualMilestoneCompleted = data?.[0]
+    this.annualMilestonePending = data?.[1]
   }
 }
