@@ -1,17 +1,19 @@
-<form [formGroup]="form">
+<form [formGroup]="form" [class.p-datepicker-show-icon]="showIcon">
   <p-datepicker
     formControlName="selectedDate"
     [iconDisplay]="'input'"
-    [showIcon]="true"
+    [showIcon]="showIcon"
+    [dateFormat]="dateFormat"
     class="text-gray-500 text-sm"
-    dateFormat="MM d, yy"
   >
-    <ng-template #inputicon let-clickCallBack="clickCallBack" class="">
-      <lucide-icon
-        [img]="Icons.CalendarRange"
-        strokeWidth="1"
-        class="text-gray-500 size-4"
-      ></lucide-icon>
-    </ng-template>
+    @if (showIcon) {
+      <ng-template #inputicon let-clickCallBack="clickCallBack">
+        <lucide-icon
+          [img]="Icons.CalendarRange"
+          strokeWidth="1"
+          class="text-gray-500 size-4"
+        ></lucide-icon>
+      </ng-template>
+    }
   </p-datepicker>
-  </form>
+</form>

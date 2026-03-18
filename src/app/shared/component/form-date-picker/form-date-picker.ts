@@ -24,6 +24,8 @@ export class FormDatePicker implements ControlValueAccessor, AfterViewInit, OnDe
   }
   private destroy$ = new Subject<void>();
   @Input() disabled: boolean = false;
+  @Input() showIcon: boolean = true;
+  @Input() dateFormat: string = 'MM d, yy';
 
   @Output() onValueChanged = new EventEmitter<any>();
 

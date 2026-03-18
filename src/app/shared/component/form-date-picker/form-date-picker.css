@@ -1,0 +1,13 @@
+::ng-deep .p-datepicker .p-datepicker-input {
+  font-size: 12px;
+  color: var(--neutralGray-500);
+}
+
+::ng-deep .p-datepicker-show-icon .p-datepicker .p-inputtext {
+  padding-left: 2rem;
+}
+
+::ng-deep .p-datepicker-show-icon .p-datepicker .p-datepicker-input-icon-container {
+  left: 0.5rem;
+  right: auto;
+}
