@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { FormSwitch } from '@shared/component/form-switch/form-switch';
+import { LineChart } from '@shared/component/line-chart/line-chart';
+import { generateRandomDataset } from '@shared/utils/util';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-time-spent-details',
-  imports: [FormSwitch, ReactiveFormsModule],
+  imports: [FormSwitch, LineChart, ReactiveFormsModule],
   templateUrl: './time-spent-details.html',
   styleUrl: './time-spent-details.css',
   standalone: true
@@ -15,6 +17,13 @@ export class TimeSpentDetails {
   form = new FormGroup({
     includeBugs: new FormControl('')
   });
+  chartLabel = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+  lineChartData = [{
+    label: 'Time Spent',
+    data: [0],
+    fill: true,
+    backgroundColor: true
+  }]
 
   get IncludeBugsFC() {
     return this.form.get('includeBugs') as FormControl;
@@ -35,9 +44,10 @@ export class TimeSpentDetails {
   }
 
   refreshDataset() {
-    console.log("refreshDataset")
-    // const bugToggle = this.IncludeBugsFC?.value;
-    // this.IncludeBugsFC?.setValue(!bugToggle);
+    this.lineChartData = this.lineChartData?.map((data) => ({
+      ...data,
+      data: generateRandomDataset(6)
+    }))
   }
 
   ngOnDestroy(): void {

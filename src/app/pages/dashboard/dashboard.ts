@@ -1,5 +1,7 @@
+import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { BarChart } from '@shared/component/bar-chart/bar-chart';
+import { generateRandomDataset } from '@shared/utils/util';
 import { DataItem } from '@swimlane/ngx-charts';
 import { CalendarDays, LucideAngularModule } from 'lucide-angular';
 import { KpiDetails } from './kpi-details/kpi-details';
@@ -8,7 +10,7 @@ import { TimeSpentDetails } from './time-spent-details/time-spent-details';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [LucideAngularModule, BarChart, KpiDetails, TicketBreakdownDetails, TimeSpentDetails],
+  imports: [LucideAngularModule, BarChart, KpiDetails, TicketBreakdownDetails, TimeSpentDetails, DecimalPipe],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
   standalone: true,
@@ -31,4 +33,15 @@ export class Dashboard {
     { name: 'Nov', value: 0 },
     { name: 'Dec', value: 0 }
   ];
+  totalFinishedTickets = 0;
+
+  constructor() {
+    this.refreshDataset()
+  }
+
+  refreshDataset() {
+    const data = generateRandomDataset(12);
+    this.kpiData = this.kpiData?.map((x, i) => ({ ...x, value: data?.[i] }))
+    this.totalFinishedTickets = this.kpiData.reduce((sum, item) => sum + item.value, 0);
+  }
 }

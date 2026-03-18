@@ -25,7 +25,7 @@ export class DonutChart implements OnInit, OnChanges {
     this.renderChart();
   }
 
-  ngOnChanges(e: any): void {
+  ngOnChanges(): void {
     this.renderChart();
   }
 

@@ -6,5 +6,13 @@
   <div class="w-full">
     <span class="text-sm font-bold text-neutralGray-500">Past 6 months</span>
   </div>
-  <div class="w-full">chart</div>
+  <div class="w-full">
+    <app-line-chart
+      [labels]="chartLabel"
+      [values]="lineChartData"
+      [showLegend]="false"
+      [showY]="false"
+      containerClass="h-[220px]"
+    ></app-line-chart>
+  </div>
 </div>

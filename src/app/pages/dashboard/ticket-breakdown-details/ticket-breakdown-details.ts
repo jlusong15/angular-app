@@ -72,18 +72,18 @@ export class TicketBreakdownDetails implements OnDestroy, AfterViewInit {
   }
 
   refreshDataset() {
-    this.taskData = [{
-      label: 'Tasks',
+    this.taskData = this.taskData?.map((data) => ({
+      ...data,
       data: generateRandomDataset(12)
-    }]
-    this.bugsData = [{
-      label: 'Bugs',
+    }))
+    this.bugsData = this.bugsData?.map((data) => ({
+      ...data,
       data: generateRandomDataset(12)
-    }]
-    this.supportData = [{
-      label: 'Support',
+    }))
+    this.supportData = this.supportData?.map((data) => ({
+      ...data,
       data: generateRandomDataset(12)
-    }]
+    }))
   }
 
   ngOnDestroy(): void {
