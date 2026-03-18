@@ -20,15 +20,15 @@ export const ProjectDropdownList: ProjectDropdownModel[] = [
     code: 'project2'
   },
   {
-    name: 'Direct Hire',
+    name: 'Direct Hire PH',
     code: 'project3'
   },
   {
-    name: 'Cat Corp.',
+    name: 'Meow Corp.',
     code: 'project4'
   },
   {
-    name: 'Project 5th',
+    name: 'Project Mochi',
     code: 'project5'
   },
 ]
