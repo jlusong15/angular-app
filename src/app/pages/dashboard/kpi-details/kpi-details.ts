@@ -7,10 +7,11 @@ import { Subject, takeUntil } from 'rxjs';
 import { DonutChartData, SimpleTableData } from './data';
 import { CalendarRange, LucideAngularModule } from 'lucide-angular';
 import { generateRandomDataset } from '@shared/utils/util';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-kpi-details',
-  imports: [FormsModule, ReactiveFormsModule, DatePicker, DonutChart, SimpleTable, LucideAngularModule],
+  imports: [FormsModule, ReactiveFormsModule, DatePicker, DonutChart, SimpleTable, LucideAngularModule, DecimalPipe],
   templateUrl: './kpi-details.html',
   styleUrl: './kpi-details.css',
   standalone: true
@@ -55,7 +56,7 @@ export class KpiDetails implements OnDestroy {
   refreshDataset() {
     this.donutChart = {
       labels: this.donutChart.labels,
-      data: generateRandomDataset(2)
+      data: generateRandomDataset(2, 2000)
     }
   }
 

@@ -1,5 +1,5 @@
-export const generateRandomDataset = (maxLength: number = 1): number[] => {
-  return Array.from({ length: (maxLength ?? 1) }, () => Math.floor(Math.random() * 100)); // 0–99
+export const generateRandomDataset = (maxLength: number = 1, maxDefault = 100): number[] => {
+  return Array.from({ length: (maxLength ?? 1) }, () => Math.floor(Math.random() * maxDefault)); // 0–99
 }
 
 export const hexToRgba = (hex: string, alpha = 1) => {

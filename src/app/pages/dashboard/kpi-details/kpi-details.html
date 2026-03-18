@@ -29,17 +29,17 @@
     <div class="w-full pl-8 pt-8">
       <div class="flex justify-between mb-4 text-sm">
         <span class="d-flex text-primary">Stories</span
-        ><span class="d-flex font-bold text-base">{{ StoriesValue }}</span>
+        ><span class="d-flex font-bold text-base">{{ StoriesValue | number: '1.0-0' }}</span>
       </div>
 
       <div class="flex justify-between mb-4 text-sm">
         <span class="d-flex text-chart-1">Bugs</span
-        ><span class="d-flex font-bold text-base">{{ BugsValue }}</span>
+        ><span class="d-flex font-bold text-base">{{ BugsValue | number: '1.0-0' }}</span>
       </div>
 
       <div class="flex justify-between text-base">
         <span class="d-flex text-neutralGray-500">Overall</span
-        ><span class="d-flex font-bold text-lg">{{ OverallTickets }}</span>
+        ><span class="d-flex font-bold text-lg">{{ OverallTickets | number: '1.0-0' }}</span>
       </div>
     </div>
   </div>

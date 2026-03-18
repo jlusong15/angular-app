@@ -87,16 +87,22 @@
         <div class="flex flex-col gap-3 mt-5">
           <div class="flex justify-between pl-5 pr-5 pb-5">
             <div class="flex flex-col">
-              <span class="text-[48px] leading-[50px] font-bold">150</span>
+              <span class="text-[48px] leading-[50px] font-bold">{{
+                timeSpentRemaining | number: '1.0-0'
+              }}</span>
               <span class="text-neutralGray-500">REMAINING HOURS</span>
             </div>
             <div class="flex flex-col">
               <div class="flex flex-col rounded-[10px] p-1.5 text-right">
-                <span class="d-block text-[24px] leading-[32px] font-bold">32</span>
+                <span class="d-block text-[24px] leading-[32px] font-bold">{{
+                  timeSpentEstimated | number: '1.0-0'
+                }}</span>
                 <span class="d-block text-neutralGray-500">Estimated Hours</span>
               </div>
               <div class="flex flex-col rounded-[10px] p-1.5 text-right">
-                <span class="d-block text-[24px] leading-[32px] font-bold">10</span>
+                <span class="d-block text-[24px] leading-[32px] font-bold">{{
+                  timeSpentLogged | number: '1.0-0'
+                }}</span>
                 <span class="d-block text-neutralGray-500">Logged Hours</span>
               </div>
             </div>
