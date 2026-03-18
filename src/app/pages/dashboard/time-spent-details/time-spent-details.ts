@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { FormSwitch } from '@shared/component/form-switch/form-switch';
 import { LineChart } from '@shared/component/line-chart/line-chart';
+import { SimpleTable } from '@shared/component/simple-table/simple-table';
 import { generateRandomDataset } from '@shared/utils/util';
 import { Subject, takeUntil } from 'rxjs';
+import { TimeSpentSimpleTableData } from './data';
 
 @Component({
   selector: 'app-time-spent-details',
-  imports: [FormSwitch, LineChart, ReactiveFormsModule],
+  imports: [FormSwitch, LineChart, SimpleTable, ReactiveFormsModule],
   templateUrl: './time-spent-details.html',
   styleUrl: './time-spent-details.css',
   standalone: true
@@ -24,6 +26,7 @@ export class TimeSpentDetails {
     fill: true,
     backgroundColor: true
   }]
+  simpleTable = TimeSpentSimpleTableData
 
   get IncludeBugsFC() {
     return this.form.get('includeBugs') as FormControl;

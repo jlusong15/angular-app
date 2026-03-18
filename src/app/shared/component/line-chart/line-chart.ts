@@ -27,7 +27,9 @@ export class LineChart implements OnInit, OnChanges {
   @Input() showLegend: boolean = true;
   @Input() showX: boolean = true;
   @Input() showXGrid: boolean = true;
+  @Input() showXTick: boolean = true;
   @Input() showY: boolean = true;
+  @Input() showYTick: boolean = true;
   @Input() showYGrid: boolean = true;
   data: ChartData<'line'> | undefined;
   options: ChartOptions<'line'> | undefined;
@@ -84,23 +86,29 @@ export class LineChart implements OnInit, OnChanges {
         },
         scales: {
           x: {
+            beginAtZero: true,
             display: this.showX,
             ticks: {
-              color: textColorSecondary
+              color: textColorSecondary,
+              display: this.showXTick,
             },
             grid: {
-              color: 'transparent',
-              drawOnChartArea: this.showXGrid
+              color: (context) => context?.index > 0 && this.showXGrid ? surfaceBorder : 'transparent',
+              drawOnChartArea: this.showXGrid,
+              drawTicks: false,
             }
           },
           y: {
+            beginAtZero: true,
             display: this.showY,
             ticks: {
-              color: textColorSecondary
+              color: textColorSecondary,
+              display: this.showYTick,
             },
             grid: {
-              color: 'transparent',
-              drawOnChartArea: this.showYGrid
+              color: (context) => context?.index > 0 && this.showYGrid ? surfaceBorder : 'transparent',
+              drawOnChartArea: this.showYGrid,
+              drawTicks: false
             }
           }
         }
