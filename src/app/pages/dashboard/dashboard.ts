@@ -1,13 +1,14 @@
 import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { BarChart } from '@shared/component/bar-chart/bar-chart';
+import { MonthsList } from '@shared/types/project.model';
 import { generateRandomDataset } from '@shared/utils/util';
 import { DataItem } from '@swimlane/ngx-charts';
+import { format, subYears } from 'date-fns';
 import { CalendarDays, LucideAngularModule } from 'lucide-angular';
 import { KpiDetails } from './kpi-details/kpi-details';
 import { TicketBreakdownDetails } from "./ticket-breakdown-details/ticket-breakdown-details";
 import { TimeSpentDetails } from './time-spent-details/time-spent-details';
-import { MonthsList } from '@shared/types/project.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,6 +28,8 @@ export class Dashboard {
   timeSpentRemaining = 0;
   timeSpentEstimated = 0;
   timeSpentLogged = 0;
+  currentYear = format(new Date(), 'yyyy');
+  previousYear = format(subYears(new Date(), 1), 'yyyy');
 
   constructor() {
     this.refreshDataset()

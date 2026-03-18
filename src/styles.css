@@ -108,7 +108,7 @@
 	--sidebar-primary-foreground: oklch(0.985 0 0);
 	--sidebar-accent: oklch(0.97 0 0);
 	--sidebar-accent-foreground: rgb(48, 103, 53);
-	/* --sidebar-border: oklch(0.922 0 0); */
+	--sidebar-border: oklch(0.922 0 0);
 	--sidebar-ring: oklch(0.708 0 0);
 	--sidebar-border: hsl(220 13% 91%);
 }
