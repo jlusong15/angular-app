@@ -1,0 +1,21 @@
+<p-panel [toggleable]="true" [(collapsed)]="collapsed" class="border-red">
+  <ng-template pTemplate="header">
+    <div class="flex items-center justify-between w-full">
+      <div class="flex items-center gap-2">
+        @if (icon) {
+          <lucide-icon [img]="icon" class="size-3 text-gray-500"></lucide-icon>
+        }
+        <div [innerHTML]="headerContent" class="my-0"></div>
+      </div>
+
+      <lucide-icon
+        [img]="ChevronDown"
+        class="size-3 transition-transform duration-200 text-gray-500 cursor-pointer"
+        [class.rotate-180]="!collapsed"
+        (click)="collapsed = !collapsed"
+      ></lucide-icon>
+    </div>
+  </ng-template>
+
+  <div [innerHTML]="childContent" class="mt-2"></div>
+</p-panel>

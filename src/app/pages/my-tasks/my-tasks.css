@@ -1,0 +1,6 @@
+::ng-deep .no-arrow::before {
+  margin-left: calc(1 * var(--p-popover-gutter));
+}
+::ng-deep .no-arrow::after {
+  margin-left: calc(1 * (var(--p-popover-gutter) - -1px));
+}

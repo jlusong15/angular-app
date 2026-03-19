@@ -1,3 +1,97 @@
-<h3 class="mb-5">My Tasks</h3>
+<div class="flex justify-between">
+  <!-- Content -->
+  <div class="p-4 w-full">
+    <h3 class="mb-5">My Tasks</h3>
 
-<p>Coming soon!</p>
+    <p>Coming soon!</p>
+  </div>
+
+  <!-- Right Sidebar -->
+  <div class="p-4 bg-slate-50 w-full max-w-[250px] min-h-svh">
+    <p-button
+      label="Add Task"
+      class="w-full [&_button]:w-full [&_button]:bg-primary [&_button]:text-sm"
+      icon="pi pi-plus-circle"
+    />
+    <div class="my-2.5 flex gap-x-2 justify-between">
+      <div class="w-full">
+        <input
+          pInputText
+          type="text"
+          placeholder="Type here..."
+          class="w-full shadow-none! focus:shadow-none !border-gray-300 !text-xs"
+        />
+      </div>
+      <div>
+        <p-button
+          (click)="op.toggle($event)"
+          severity="secondary"
+          class="m-0 [&_button]:border-gray-300 border [&_button]:bg-white"
+        >
+          <ng-template pTemplate="content">
+            <lucide-icon [img]="Icons.ListFilter" class="size-4"></lucide-icon>
+          </ng-template>
+        </p-button>
+        <p-popover styleClass="no-arrow" #op>
+          <div class="flex flex-col gap-4 w-[12rem] text-gray-500 text-xs">Add filters here...</div>
+        </p-popover>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3">
+      <div>
+        <app-collapsible-section [collapsed]="false" [icon]="Icons.Crown">
+          <div #csHeader><span class="text-xs">Announcement</span></div>
+          <div #csContent>
+            <p class="m-0 text-xs text-neutralGray-500">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </app-collapsible-section>
+      </div>
+      <div>
+        <app-collapsible-section [icon]="Icons.Clock">
+          <div #csHeader><span class="text-xs">Recent</span></div>
+          <div #csContent>
+            <ul class="list-disc ml-2 text-xs text-neutralGray-500">
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+            </ul>
+          </div>
+        </app-collapsible-section>
+      </div>
+      <div>
+        <app-collapsible-section [collapsed]="false" [icon]="Icons.CalendarClock">
+          <div #csHeader><span class="text-xs">Schedule</span></div>
+          <div #csContent>
+            <ul class="list-disc ml-2 text-xs text-neutralGray-500">
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+            </ul>
+          </div>
+        </app-collapsible-section>
+      </div>
+      <div>
+        <app-collapsible-section [icon]="Icons.Rocket">
+          <div #csHeader><span class="text-xs">Deployments</span></div>
+          <div #csContent>
+            <ul class="list-disc ml-2 text-xs text-neutralGray-500">
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+            </ul>
+          </div>
+        </app-collapsible-section>
+      </div>
+    </div>
+  </div>
+</div>

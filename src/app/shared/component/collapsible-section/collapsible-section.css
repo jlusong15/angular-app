@@ -1,0 +1,4 @@
+::ng-deep .p-panel-header-actions .p-button {
+  /* display: none; */
+  @apply hidden;
+}
