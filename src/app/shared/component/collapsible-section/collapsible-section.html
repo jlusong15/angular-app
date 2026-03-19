@@ -5,7 +5,7 @@
         @if (icon) {
           <lucide-icon [img]="icon" class="size-3 text-gray-500"></lucide-icon>
         }
-        <div [innerHTML]="headerContent" class="my-0"></div>
+        <div class="my-0"><ng-content select="[csHeader]"></ng-content></div>
       </div>
 
       <lucide-icon
@@ -17,5 +17,5 @@
     </div>
   </ng-template>
 
-  <div [innerHTML]="childContent" class="mt-2"></div>
+  <div class="mt-2"><ng-content select="[csContent]"></ng-content></div>
 </p-panel>

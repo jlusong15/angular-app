@@ -1,5 +1,6 @@
 import { AfterContentInit, Component, ContentChild, ElementRef, Input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { CsContentDirective, CsHeaderDirective } from '@shared/directives/collapsible-section';
 import { ChevronDown, LucideAngularModule, LucideIconData } from 'lucide-angular';
 import { PanelModule } from 'primeng/panel';
 
@@ -12,22 +13,20 @@ import { PanelModule } from 'primeng/panel';
 })
 export class CollapsibleSection implements AfterContentInit {
   readonly ChevronDown = ChevronDown;
-  @ContentChild('csContent') content!: ElementRef;
-  @ContentChild('csHeader') header!: ElementRef;
+  @ContentChild(CsHeaderDirective) header!: CsHeaderDirective;
+  @ContentChild(CsContentDirective) content!: CsContentDirective;
 
   @Input() collapsed: boolean = true;
   @Input() icon!: LucideIconData;
 
-  childContent: SafeHtml | undefined;
-  headerContent: SafeHtml | undefined;
+  safeHeaderHtml!: SafeHtml;
+  safeContentHtml!: SafeHtml;
 
-  constructor(private sanitizer: DomSanitizer) {
-
-  }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngAfterContentInit() {
-    this.headerContent = this.cleanHtml(this.header?.nativeElement?.innerHTML);
-    this.childContent = this.cleanHtml(this.content?.nativeElement?.innerHTML);
+    this.safeHeaderHtml = this.cleanHtml(this.header?.el?.nativeElement?.innerHTML || '');
+    this.safeContentHtml = this.cleanHtml(this.content?.el?.nativeElement?.innerHTML || '');
   }
 
   cleanHtml(rawHtml: string) {
