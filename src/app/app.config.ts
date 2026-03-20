@@ -2,6 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import Aura from '@primeuix/themes/aura';
+import { provideQuillConfig } from 'ngx-quill';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 
@@ -14,5 +15,10 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Aura
       }
-    })],
+    }),
+    provideQuillConfig({
+      modules: {
+        toolbar: true
+      }
+    })]
 };
