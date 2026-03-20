@@ -1,9 +1,69 @@
 <div class="flex justify-between">
-  <!-- Content -->
   <div class="p-4 w-full">
+    <!-- Header -->
     <h3 class="mb-5">My Tasks</h3>
+    <div class="mb-5">
+      <app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+    </div>
 
-    <p>Coming soon!</p>
+    <!-- Content -->
+    <div class="pt-2">
+      <h4 class="mb-5">Add Task</h4>
+      <div class="flex flex-col gap-2">
+        <p>Task Category</p>
+        <app-form-select
+          [list]="taskCategoryList"
+          placeholder="Select a task category..."
+        ></app-form-select>
+
+        <!-- Step 1 -->
+        <div class="flex gap-2 mt-5">
+          <lucide-icon
+            [img]="Icons.CircleCheck"
+            strokeWidth="1"
+            class="text-success size-5"
+          ></lucide-icon>
+          <span class="ml-0.5">Step 1</span>
+        </div>
+        <div class="px-10 mb-2.5 ml-2 border-l border-l-neutralGray-300">
+          <div class="flex mx-5 pt-5 mb-5 gap-5">
+            <div class="flex flex-col w-[50%]">
+              <span class="mb-1 text-xs">Task Name</span>
+              <app-form-select [list]="taskNameList"></app-form-select>
+            </div>
+            <div class="flex flex-col w-[50%]">
+              <span class="mb-1 text-xs">Schedule</span>
+              <app-form-date-picker class="w-full"></app-form-date-picker>
+            </div>
+          </div>
+          <div class="flex mx-5 gap-5">
+            <div class="flex flex-col w-[50%] pb-5 pr-5">
+              <span class="mb-1 text-xs">Group</span>
+              <app-form-select [list]="groupList"></app-form-select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-2 mt-5">
+          <span class="ml-0.5">Step 2</span>
+        </div>
+        <div class="px-10 mb-2.5 ml-2 border-l border-l-neutralGray-300">
+          <div class="flex mx-5 pt-5 mb-5 gap-5 pr-5">
+            <div class="flex flex-col w-[50%]">
+              <span class="mb-1 text-xs">Short Description</span>
+              <input type="text" pInputText />
+            </div>
+          </div>
+          <div class="flex mx-5 w-full">
+            <div class="flex flex-col w-full pb-5">
+              <span class="mb-1 text-xs">Other Notes</span>
+              <textarea rows="5" cols="30" pTextarea></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Right Sidebar -->
