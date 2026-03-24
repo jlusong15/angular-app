@@ -38,7 +38,7 @@
         <a
           [routerLink]="item.route"
           class="flex items-center gap-3 p-3 text-white hover:bg-gray-900/20 rounded transition-all"
-          routerLinkActive="bg-primary/80"
+          routerLinkActive="bg-black/40"
           [routerLinkActiveOptions]="{ exact: true }"
         >
           @if (item.icon) {
@@ -58,7 +58,7 @@
             [routerLink]="item.route"
             class="gap-3 p-3 bg-transparent text-white rounded flex items-center justify-center hover:bg-gray-900/20 cursor-pointer transition-all"
             [title]="item.name"
-            routerLinkActive="bg-primary/80"
+            routerLinkActive="bg-black/40"
             [routerLinkActiveOptions]="{ exact: true }"
           >
             <lucide-icon

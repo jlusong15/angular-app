@@ -23,17 +23,16 @@
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="hidden sm:block">
           <div class="flex space-x-4">
-            <a
-              *ngFor="let item of navigation"
-              [routerLink]="item.route"
-              [ngClass]="{
-                'bg-white text-primary': item.current,
-                'text-white hover:bg-white/5 hover:text-white': !item.current,
-              }"
-              class="rounded-md px-3 py-2 text-sm font-medium"
-            >
-              {{ item.name }}
-            </a>
+            @for (item of navigation; track $index) {
+              <a
+                [routerLink]="item.route"
+                routerLinkActive="bg-black/40"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="rounded-md px-3 py-2 text-sm font-medium"
+              >
+                {{ item.name }}
+              </a>
+            }
           </div>
         </div>
       </div>
@@ -80,17 +79,16 @@
   @if (mobileOpen()) {
     <div class="sm:hidden">
       <div class="space-y-1 px-2 pt-2 pb-3">
-        <a
-          *ngFor="let item of navigation"
-          [routerLink]="item.route"
-          [ngClass]="{
-            'bg-gray-900 text-white': item.current,
-            'text-gray-300 hover:bg-white/5 hover:text-white': !item.current,
-          }"
-          class="block rounded-md px-3 py-2 text-base font-medium"
-        >
-          {{ item.name }}
-        </a>
+        @for (item of navigation; track $index) {
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="bg-black/40"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="block rounded-md px-3 py-2 text-base font-medium"
+          >
+            {{ item.name }}
+          </a>
+        }
       </div>
     </div>
   }
