@@ -26,18 +26,18 @@
           <span class="ml-0.5">Step 1</span>
         </div>
         <div class="px-10 mb-2.5 ml-2 border-l border-l-neutralGray-300">
-          <div class="flex mx-5 pt-5 mb-5 gap-5">
-            <div class="flex flex-col w-[50%]">
+          <div class="flex flex-col md:flex-row mx-5 pt-5 mb-5 gap-5">
+            <div class="flex flex-col w-full md:w-1/2">
               <span class="mb-1 text-xs">Task Name</span>
               <app-form-select [list]="taskNameList"></app-form-select>
             </div>
-            <div class="flex flex-col w-[50%]">
+            <div class="flex flex-col w-full md:w-1/2">
               <span class="mb-1 text-xs">Schedule</span>
               <app-form-date-picker class="w-full"></app-form-date-picker>
             </div>
           </div>
-          <div class="flex mx-5 gap-5">
-            <div class="flex flex-col w-[50%] pb-5 pr-5">
+          <div class="flex flex-col md:flex-row mx-5 pt-5 mb-5 gap-5">
+            <div class="flex flex-col w-full md:w-1/2">
               <span class="mb-1 text-xs">Group</span>
               <app-form-select [list]="groupList"></app-form-select>
             </div>
@@ -49,16 +49,16 @@
           <span class="ml-0.5">Step 2</span>
         </div>
         <div class="px-10 mb-2.5 ml-2 border-l border-l-neutralGray-300">
-          <div class="flex mx-5 pt-5 mb-5 gap-5 pr-5">
-            <div class="flex flex-col w-[50%]">
+          <div class="flex flex-col md:flex-row mx-5 pt-5 mb-5 gap-5">
+            <div class="flex flex-col w-full md:w-1/2">
               <span class="mb-1 text-xs">Short Description</span>
               <input type="text" pInputText />
             </div>
           </div>
-          <div class="flex mx-5 w-full">
-            <div class="flex flex-col w-full pb-5">
+          <div class="flex flex-col md:flex-row mx-5 pt-5 mb-5 gap-5">
+            <div class="flex flex-col w-full md:w-1/2">
               <span class="mb-1 text-xs">Other Notes</span>
-              <textarea rows="5" cols="30" pTextarea></textarea>
+              <textarea rows="5" cols="30" pTextarea class="w-full"></textarea>
             </div>
           </div>
         </div>
