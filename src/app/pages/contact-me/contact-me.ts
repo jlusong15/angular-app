@@ -8,7 +8,6 @@ import { ButtonModule } from 'primeng/button';
   selector: 'app-contact-me',
   imports: [RightSidebar, Breadcrumb, ButtonModule, EditorComponent],
   templateUrl: './contact-me.html',
-  styleUrl: './contact-me.css',
   standalone: true,
 })
 export class ContactMe {

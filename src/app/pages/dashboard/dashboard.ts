@@ -29,6 +29,8 @@ export class Dashboard {
   timeSpentLogged = 0;
   currentYear = format(new Date(), 'yyyy');
   previousYear = format(subYears(new Date(), 1), 'yyyy');
+  curYrShort = format(new Date(), 'yy');
+  prevYrShort = format(subYears(new Date(), 1), 'yy');
 
   constructor() {
     this.refreshDataset()
