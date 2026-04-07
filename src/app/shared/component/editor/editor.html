@@ -1,8 +1,10 @@
 <quill-editor
   theme="snow"
   class="bg-white w-full"
-  [formControl]="editorControl"
   [modules]="modules"
   [placeholder]="placeholder"
   [styles]="{ height }"
-></quill-editor>
+  [(ngModel)]="value"
+  (onContentChanged)="onContentChange($event)"
+>
+</quill-editor>
